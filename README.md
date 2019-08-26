@@ -150,7 +150,61 @@ public class OrcFile {
   
   public static final WriterVersion CURRENT_WRITER = WriterVersion.ORC_14;
   
+  public enum EncodingStrategy {
+    SPEED, COMPRESSION
+  }
   
+  public enum CompressionStrategy {
+    SPEED, COMPRESSION
+  }
+  
+  protected OrcFile() {}
+  
+  public static class RaderOptions {
+    private final Configuration conf;
+    private FileSystem filesystem;
+    
+    private FileMetadata fileMetadata;
+    private boolean useUTCTimestamp;
+    
+    public ReaderOptions(Configuration conf) {
+      this.conf = conf;
+    }
+    
+    public ReaderOptions filesystem(FileSystem fs) {
+      this.filesystem = fs;
+      return this;
+    }
+    
+    public ReaderOptions maxLength(long val) {
+      maxLength = val;
+      return this;
+    }
+    
+    public ReaderOptions maxLength(long val) {
+      maxLength = val;
+      return this;
+    }
+    
+    public RaaderOptions orcTail(OrcTail tail) {
+      this.orcTail = tail;
+      return this;
+    }
+    
+    public ReaderOptions orcTail(OrcTail tail) {
+      this.orcTail = tail;
+      return this;
+    }
+    
+    public ReaderOptions setKeyProvider(KeyProvider provider) {
+      this.keyProvider = provider;
+      return this;
+    }
+    
+    
+    
+    
+  }
   
   
   
