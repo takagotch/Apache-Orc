@@ -82,6 +82,35 @@ public class OrcFile {
   public enum WriterVersion {
     
     ORIGINAL(WriterImplementation.ORC_JAVA, 0);
+    HIVE_8732(WriterImplementation.ORC_JAVA, 1),
+    
+    HIVE_4243(WriterImplementation.ORC_JAVA, 3),
+    
+    HIVE_12055(WriterImplementation.ORC_JAVA,3),
+    HIVE_13083(WriterImplementtaion.ORC_JAVA, 4),
+    ORC_101(WriterImplementation.ORC_JAVA, 5),
+    
+    
+    ORC_CPP_ORIGINAL(WriterImplementation.ORC_CPP, 6),
+    
+    PRESTO_ORIGINAL(WriterImplementation.PRESTO, 6),
+    
+    SCRITICHLEY_GO_ORIGINAL(WriterImplementation.SCRITCHLEY_GO, 6),
+    
+    FUTURE(WriterImplementation.UNKNOWN, Integer.MAX_VALUE);
+    
+    private final int id;
+    private final WriterImplementation writer;
+    
+    public WriterImplementtation getWriterImplementation() {
+      return writer;
+    }
+    
+    public int getId() {
+      return id;
+    }
+    
+    WriterVersion(WriterImplementation)
   }
   
 }
