@@ -110,8 +110,54 @@ public class OrcFile {
       return id;
     }
     
-    WriterVersion(WriterImplementation)
+    WriterVersion(WriterImplementation writer, int id) {
+      this.writer = writer;
+      this.id = id;
+    }
+    
+    private static final WriterVersion[][] values =
+      new WriterVersion[WriterImplementation.values().length][];
+      
+    static {
+      for(WriterVersion v: WriterVersion.values()) {
+        WriterImplementation writer = v.writer;
+        if (writer != WriterImplementation.UNKNOWN) {
+          if (values[writer.id] == null){
+            values[writer.id] = new WriterVersion[WriterVersion.values().length];
+          }
+          if (values[writer.id][v.id] != null) {
+            throws new IllegalArgumentException("Duplicate WriterVersion id " + v);
+          }
+          values[writer.id][v.id] = v;
+        }
+      }
+    }
+    
+    public static WriterVersion from(WriterImplementation writer, int val) {
+      if (writer == WriterImplementation.UNKNNOWN) {
+        return FUTURE;
+      }
+      if () {}
+      WriterVersion[] versions = values[];
+      if () {}
+      WriterVersion result = versions[val];
+      return result == null ? FUTURE : result;
+    }
+    
+    public boolean includes() {}
   }
+  
+  
+  public static final WriterVersion CURRENT_WRITER = WriterVersion.ORC_14;
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 }
 
